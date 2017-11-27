@@ -1,0 +1,214 @@
+<div class="container" style="margin-top:30px;">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6 ">
+            <div class="form-group">
+                <label for="aadharnumber">Enter Your Aadhaar Number</label>
+                <input type="text" #aadhaarid class="form-control hasclear" id="aadharnumber"
+                 placeholder=" Enter 12-digit aadhaar number" [(ngModel)]="aadharvalue"
+                 name="aadharid" >
+                 <span class="clearer glyphicon glyphicon-remove-circle form-control-feedback"></span>
+                 
+              </div>
+              <div class="form-group" *ngIf="showOTP">
+                <label for="aadharOtp">Enter OTP</label>
+                <input type="text" #otp class="form-control" id="aadharOtp" 
+                placeholder="Enter OTP" [(ngModel)]="aadharotp"
+                name="aadharotp" >
+              </div>
+
+              <div class="col-md-10">
+                <button type="submit" class="btn btn-info" *ngIf="!showOTP" (click)="OnSendOTP(aadhaarid.value)" >Send OTP</button>
+                <button type="submit" class="btn btn-info"  *ngIf="showOTP" (click)="openCrd()" >Verify OTP</button>
+                <!-- (click)="open(content)" -->
+                <button type="submit" class="btn btn-success"  *ngIf="showOTP" (click)="OnSendOTP(aadhaarid.value)" >Resend OTP</button>
+                <button type="submit" class="btn btn-secondary"  *ngIf="showOTP" (click)="OnClear()" > Clear All</button>
+                
+          </div>
+      </div>
+    
+      <div class="col-md-6">
+          <div class="card" *ngIf="opencrd">
+        <div class="modal-body" style="text-align:center;">
+            <div class="row" >
+              <div class="col-md-6">
+                  Aadhar Id : {{aadhaarid.value}}
+                
+              </div>
+              <div class="col-md-6" style="text-align:left;">
+                  User ID : BS110224545 
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6" >
+                  <img src="./../../assets/user.png" class="img-fluid" alt="Responsive image" style="width:100px;hight:100px;">                  
+                </div>
+                <div class="col-md-6" style="text-align:left;">
+                    Name :  Vaibhav Gaikwad <br>
+                    Dob : 03 / 04 / 1995  <br>
+                    Gender : Male
+                </div>
+             </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6" >
+                    CO:  'S/O: TEST NAME'              </div>
+                <div class="col-md-6" style="text-align:left;">
+                    House: ward no. 007
+                </div>
+             </div><hr>
+             <div class="row">
+                <div class="col-md-6" >
+                    Street: 'street name'               </div>
+                <div class="col-md-6" style="text-align:left;">
+                    landmark: landmark provided
+                </div>
+             </div><hr>
+             <div class="row">
+                <div class="col-md-6" >
+                    City: Panna vtc
+                </div>
+                <div class="col-md-6" style="text-align:left;">
+                    Subdist: 'sub-district
+                </div>
+             </div><hr>
+             <div class="row">
+                <div class="col-md-6" >
+                    District: district
+                               </div>
+                <div class="col-md-6" style="text-align:left;">
+                    State: state name
+                </div>
+             </div><hr>
+             <div class="row">
+                <div class="col-md-6" >
+                    Pin Code: 412 410
+                               </div>
+                <div class="col-md-6" style="text-align:left;">
+                    time: 'DD/MM/YYYY, HH:MM:SS PM'  
+                </div>
+             </div> 
+         </div>
+</div>
+      </div>
+    </div>
+      
+   </div>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-md-10" >
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+           <h4 class="modal-title"> Aadhaar Authenticated Successfully</h4>  
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <div class="row" >
+            <div class="col-md-6">
+                Aadhar Id : {{aadhaarid.value}}
+              
+            </div>
+            <div class="col-md-6" style="text-align:left;">
+                User ID : BS110224545 
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col-md-6" >
+                <img src="./../../assets/user.png" class="img-fluid" alt="Responsive image" style="width:100px;hight:100px;">                  
+              </div>
+              <div class="col-md-6" style="text-align:left;">
+                  Name :  Vaibhav Gaikwad <br>
+                  Dob : 03 / 04 / 1995  <br>
+                  Gender : Male
+              </div>
+           </div>
+          <hr>
+          <div class="row">
+              <div class="col-md-6" >
+                  CO:  'S/O: TEST NAME'              </div>
+              <div class="col-md-6" style="text-align:left;">
+                  House: ward no. 007
+              </div>
+           </div><hr>
+           <div class="row">
+              <div class="col-md-6" >
+                  Street: 'street name'               </div>
+              <div class="col-md-6" style="text-align:left;">
+                  landmark: landmark provided
+              </div>
+           </div><hr>
+           <div class="row">
+              <div class="col-md-6" >
+                  City: Panna vtc
+              </div>
+              <div class="col-md-6" style="text-align:left;">
+                  Subdist: 'sub-district
+              </div>
+           </div><hr>
+           <div class="row">
+              <div class="col-md-6" >
+                  District: district
+                             </div>
+              <div class="col-md-6" style="text-align:left;">
+                  State: state name
+              </div>
+           </div><hr>
+           <div class="row">
+              <div class="col-md-6" >
+                  Pin Code: 412 410
+                             </div>
+              <div class="col-md-6" style="text-align:left;">
+                  time: 'DD/MM/YYYY, HH:MM:SS PM'  
+              </div>
+           </div> 
+       </div>
+          
+         <div class="modal-footer" style="margin-right: 199px;">
+          <button type="button" class="btn btn-success" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
+</div> -->
+
+  
+<!-- <div id="quaggaModal" class="qmodel">
+    <div id="quaggaModelContent" class="qmodel-content"></div>
+</div> -->
+
+ 
